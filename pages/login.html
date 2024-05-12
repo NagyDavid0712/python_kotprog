@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bejelentkezés | RicerPower.com</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/menu.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/skeleton.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css') }}/>
+    <link rel="icon" href={{ url_for('static', filename='img/icon.png') }}>
+</head>
+<body>
+
+    {% if stat is defined %}
+        {% if stat["success"] %}
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="close">&times;</span>
+                    <p>{{ stat["msg"] }}</p>
+                </div>
+            </div>
+        {% else %}
+            {% if err is defined %}
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="close">&times;</span>
+                        <h1>stat["msg"]</h1>
+                        {% for e in err %}
+                            <p>{{ e }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="close">&times;</span>
+                        <p>{{ stat["msg"] }}</p>
+                    </div>
+                </div>
+            {% endif %}      
+        {% endif %}
+        <script>
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById('close');
+            modal.style.display = 'block';
+            btn.onclick = function() { 
+                modal.style.display = 'none'; 
+            }
+        </script>
+
+    {% endif %}
+
+    <!--
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <p>Hiba a bejelentkezés során. Hibás felhasználónév vagy jelszó!</p>
+        </div>
+    </div>
+
+    
+
+    <?php
+        if($error) {
+            echo "<script>
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById('close');
+            modal.style.display = 'block';
+            btn.onclick = function() { modal.style.display = 'none'; }
+            </script>";
+        }
+    ?>
+
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close2">&times;</span>
+            <p>Sikeres regisztráció, kérjük jelentkezz be!</p>
+            <?php unset($_GET["registrationSucces"]) ?>
+        </div>
+    </div>
+
+    <?php
+        if($isOk) {
+            echo "<script>
+            var modal = document.getElementById('myModal2');
+            var btn = document.getElementById('close2');
+            modal.style.display = 'block';
+            btn.onclick = function() { modal.style.display = 'none'; }
+            </script>";
+        }
+    ?>
+
+    <div id="myModal3" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close3">&times;</span>
+            <p>Hiba a regisztráció során! Valamelyik mező nem felelt meg a kritériumnak.</p>
+            <?php unset($_GET["errorWhileRegistrating"]) ?>
+        </div>
+    </div>
+
+    <?php
+        if($errorWhileRegistrating) {
+            echo "<script>
+            var modal = document.getElementById('myModal3');
+            var btn = document.getElementById('close3');
+            modal.style.display = 'block';
+            btn.onclick = function() { modal.style.display = 'none'; }
+            </script>";
+        }
+    ?>
+    -->
+    {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+    {% endwith %}
+    <main>
+        <article id="login-reg-container">
+            <form id="login-area" method="post" action="/auth_user">
+                <fieldset>
+                    <legend>Bejelentkezés</legend>
+                    <input class="inputs" type="text" name="login__name" placeholder="Felhasználónév" required/>
+                    <input class="inputs" type="password" name="login__password" placeholder="Jelszó" required/>        
+                    <br>            
+                    <input type="submit" name="login__button" value="Bejelentkezés"/>
+                    <br/>
+                </fieldset>
+            </form>
+            <form id="reg-area" method="post" action="/reg_user">
+                <fieldset>
+                    <legend>Regisztráció</legend>
+                    <div class="input-holder">
+                        <input class="inputs" type="text" name="reg__email" placeholder="E-mail cím" required/>
+                        <div class="tooltip">
+                            <div class="info"><img src={{ url_for('static', filename='fonts/svg/info.svg') }} alt="info"></div>
+                            <div class="tooltiptext">Olyan e-mail címet adj meg ami létezik!</div>
+                        </div>
+                    </div>
+                    <div class="input-holder">
+                        <input class="inputs" type="text" name="reg__name" placeholder="Felhasználó neved" required/>
+                        <div class="tooltip">
+                            <div class="info"><img src={{ url_for('static', filename='fonts/svg/info.svg') }} alt="info"></div>
+                            <div class="tooltiptext">A felhasználó név csak kis/nagybetűket és számokat tartalmazhat! Minimum hossz: 8 karakter.</div>
+                        </div>
+                    </div>
+
+                    <div class="input-holder">
+                        <input class="inputs" type="text" name="reg__firstname" placeholder="Keresztnév" required/>
+                        <div class="tooltip">
+                            <div class="info"><img src={{ url_for('static', filename='fonts/svg/info.svg') }} alt="info"></div>
+                            <div class="tooltiptext">Az igazi keresztnevedet add meg!</div>
+                        </div>
+                    </div>
+
+                    <div class="input-holder">
+                        <input class="inputs" type="text" name="reg__lastname" placeholder="Vezetéknév" required/>
+                        <div class="tooltip">
+                            <div class="info"><img src={{ url_for('static', filename='fonts/svg/info.svg') }} alt="info"></div>
+                            <div class="tooltiptext">Az igazi vezetéknevedet add meg!</div>
+                        </div>
+                    </div>
+
+                    <div class="input-holder">
+                        <input class="inputs" type="password" name="reg__password" placeholder="Jelszó" required/>
+                        <div class="tooltip">
+                            <div class="info"><img src={{ url_for('static', filename='fonts/svg/info.svg') }} alt="info"></div>
+                            <div class="tooltiptext">A jelszónak minimum 8 karakter hosszúnak kell lennie. Csak kis és nagybetűket illetve számokat tartalmazhat.</div>
+                        </div>
+                    </div>
+
+                    <div class="input-holder">
+                        <input class="inputs" type="password" name="reg__password__again" placeholder="Jelszó újra" required/>
+                    </div>
+
+                    <div class="input-holder">
+                        <label class="reg-label">Születési dátum: <br>
+                            <input type="date" name="reg__date" required/>
+                        </label>
+                    </div>
+                    <div class="input-holder">
+                        <label class="reg-label">Nem: 
+                            <input type="radio" name="reg__gender" value="male"/> Férfi
+                        </label>
+                        <input type="radio" name="reg__gender" value="female"/> Nő
+                    </div>
+                    
+                    <div class="input-holder">
+                        <label class="reg-label"><input type="radio" name="reg__accept_terms" required/> 
+                        A felhasználási feltételeket elfogadom.</label><br>
+                    </div>
+                    <div class="input-holder">
+                        <input type="submit" name="reg__button" value="Regisztráció"/>
+                        <input type="reset" name="reg_reset__button" value="Alaphelyzet"/>
+                    </div>
+                </fieldset>
+            </form>
+        </article>
+    </main>
+    {% include 'ui/footer.html'   %}
+</body>
+</html>

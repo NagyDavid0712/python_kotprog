@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki | RicerPower.com</title>
+
+    <link rel="stylesheet" href={{ url_for('static', filename='css/skeleton.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/menu.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/wiki.css') }}>
+    <link rel="icon" href={{ url_for('static', filename='img/icon.png') }}>
+</head>
+<body>
+    {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+    {% endwith %}
+    <main>
+       <article class="wiki-main">
+        <h1 class="site-description">Wiki</h1>
+        
+        <button type="button" class="collapse">Nissan RB26</button>
+        <div class="collapse-content">
+            <h2 class="engine-name">Nissan RB26DETT</h2>
+            <p class="engine-description">
+                A Nissan egyik legendás motorja, amit szinte az egész világon ismernek. A Nissan Skyline GT-R 
+                széria motorja. A kítűnő tuning potenciállal rendelkezik, köszönhető az acélból készült blokkjának.
+                2.6 literes, sor hathengeres motor ami egy dupla turbó hajt meg. Körülbelül 320 lóerőre képes 
+                gyárilag (papírón 280LE).
+                Egyszerű felépítésű és gyönyörű szólamú motor. 1985 és 2004 között volt gyártásban.
+            </p>
+            <div class="engine-image-holder">
+                <img src={{ url_for('static', filename='img/wiki/rb26_1.jpg') }} alt="RB26DETT" class="engine-image">
+                <p class="engine-image-description">RB26DETT</p>
+            </div>
+            <h2 class="prgh">Adatok: </h2>
+            <table class="engine-table-description">
+                <thead>
+                    <tr>
+                        <th colspan="2">Adatok</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Űrtartalom: </td>
+                        <td>2.6 liter (2.568 CC)</td>
+                    </tr>
+                    <tr>
+                        <td>Hengerek száma/elrendezésük: </td>
+                        <td>6 és soros</td>
+                    </tr>
+                    <tr>
+                        <td>Teljesítmény: </td>
+                        <td>162kW (277LE)</td>
+                    </tr>
+                    <tr>
+                        <td>Gyújtási sorrend: </td>
+                        <td>1-5-3-6-2-4</td>
+                    </tr>
+                    <tr>
+                        <td>Szelepek száma: </td>
+                        <td>24 darab</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="prgh">Jellemzői: </h2>
+            <p class="engine-description">
+                A motorblokk öntött vas, hengerfeje meg aluminium öntvény. Hengerenként 4 darab szelep található 
+                (24 szelep összesen). Érdekesség, hogy hengerenkénti fojtószeleppel rendelkezik, 
+                ami nem sok motornál fordul elő (például: BMW M széria motrok). A motor kettő darab T-25 típusú 
+                kerámia turbó feltöltőt használ amik 0.69 bar-ra voltak limitálva.
+            </p>
+            <div class="wiki-video">
+                Az RB26DETT hangja egy R32 GTR-ban:
+                <video style="padding: 15px 0;" controls>
+                    <source src={{ url_for('static', filename='vid/rb26_sound.mp4') }} type="video/mp4"/>
+                    A böngésződ nem támogatja a "video" tag-et.
+                </video>
+                <p>Forrás: <a href="https://www.youtube.com/watch?v=xXyo9SF4Z2M">YouTube</a></p>
+            </div>
+        </div>
+        
+        <button type="button" class="collapse">Toyota 2JZ</button>
+        <div class="collapse-content">
+            <h2 class="engine-name">Toyota 2JZ-GTE</h2>
+            <p class="engine-description">
+                A Toyota 2JZ motor egy legendás teljesítményű hathengeres motor, amelyet a japán autógyártó 1991 és 2002 
+                között gyártott. A 2JZ motorral szerelt autók között szerepel a Toyota Supra és az Aristo/Altezza, amelyek 
+                az autózás szerelmeseinek körében az ikonikus és népszerű modelljeik közé tartoznak.
+                A 2JZ motor két változatban készült: a 2JZ-GE, amely egy szívóbenzinmotor, és a 2JZ-GTE, amely egy dupla 
+                turbófeltöltővel ellátott változat. Mindkét motor rendkívül megbízható és tartós, és az utóbbi években egyre 
+                népszerűbbé váltak az autók és versenyautók között.
+                A 2JZ motor teljesítménye valóban kivételes, a 2JZ-GTE változat akár 320 lóerős teljesítményt is elérhet 
+                turbófeltöltőjének köszönhetően. Azonban nem csak a teljesítmény miatt népszerű ez a motor, hanem a könnyű 
+                karbantartás és a javíthatóság miatt is. Emellett a 2JZ motor meglehetősen könnyű és könnyen beépíthető az 
+                autókba, ami miatt egyre több autóentuziasta választja ezt a motort a tuningprojektekhez.
+                Összességében a Toyota 2JZ motor egy igazi klasszikus, amely a teljesítmény, megbízhatóság és könnyű 
+                karbantartás kombinációját kínálja. Ezek a motorok nem csak a Supra vagy az Aristo/Altezza tulajdonosainak 
+                jelentenek nagy értéket, hanem az autózás szerelmeseinek is, akik a motorokat különféle projektekhez 
+                használják fel.
+            </p>
+            <div class="engine-image-holder">
+                <img src={{ url_for('static', filename='img/wiki/2jz_1.jpg') }} alt="2JZ-GTE" class="engine-image">
+                <p class="engine-image-description">2JZ-GTE</p>
+            </div>
+            <h2 class="prgh">Adatok: </h2>
+            <table class="engine-table-description">
+                <thead>
+                    <tr>
+                        <th colspan="2">Adatok</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Űrtartalom: </td>
+                        <td>3.0 liter (2.997 CC)</td>
+                    </tr>
+                    <tr>
+                        <td>Hengerek száma/elrendezésük: </td>
+                        <td>6 és soros</td>
+                    </tr>
+                    <tr>
+                        <td>Teljesítmény: </td>
+                        <td>162kW (276LE)</td>
+                    </tr>
+                    <tr>
+                        <td>Gyújtási sorrend: </td>
+                        <td>1-5-3-6-2-4</td>
+                    </tr>
+                    <tr>
+                        <td>Szelepek száma: </td>
+                        <td>24 darab</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="prgh">Jellemzői: </h2>
+            <p class="engine-description">
+                A Toyota 2JZ-GTE motor blokkja egy erős és tartós, félkompakt vasöntvényből készült egység, amely magában 
+                foglalja az öntöttvas hengerfejeket is. A motor két függőlegesen elrendezett vezérműtengelyt tartalmaz, 
+                amelyeket a blokk közepén elhelyezett, ötcsapágyas főtengely hajt meg.
+                Az 2JZ-GTE motor szelepeinek száma 24, ami azt jelenti, hogy a motorban minden hengerfejben 2 szelep 
+                található. Az adagolásról négy elektromosan vezérelt porlasztó gondoskodik.
+                A motor rendelkezik egy dupla turbófeltöltő rendszerrel, amely magasabb teljesítményt biztosít a 
+                motornak. Az első turbófeltöltőt kisebb méretű, könnyebb forgó tömegű turbina hajtja, amely nagyobb 
+                érzékenységet biztosít az alacsony fordulatszámokon. Az első turbófeltöltő által beindított nagyobb 
+                turbó a későbbi fordulatszámokon biztosítja a magasabb teljesítményt.
+            </p>
+            <div class="wiki-video">
+                A 2JZ-GTE hangja egy Mark IV-es Suprában:
+                <video style="padding: 15px 0;" controls>
+                    <source src={{ url_for('static', filename='vid/2jz_sound.mp4') }} type="video/mp4"/>
+                    A böngésződ nem támogatja a "video" tag-et.
+                </video>
+                <p>Forrás: <a href="https://www.youtube.com/watch?v=Tw4_KwGxYIU">YouTube</a></p>
+            </div>
+        </div>
+        
+
+    </article>
+    </main>
+    {% include 'ui/footer.html' %}
+    <script src={{ url_for('static', filename='js/collapse.js') }}></script>
+</body>
+
+
+</html>

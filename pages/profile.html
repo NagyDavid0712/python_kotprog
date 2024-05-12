@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Profil | RicerPower.com</title>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/menu.css") }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/skeleton.css") }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/profile.css") }}/>
+        <link rel="icon" href={{ url_for('static', filename="img/icon.png") }}>
+    </head>
+    <body>
+        {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+        {% endwith %}
+        <main>
+            <article id="user-profile">
+                <section id="user-profile-sidebar">
+                    <div id="profile-image"><img src={{ url_for('static', filename=user_session.prof_pic_loc) }} alt="profilkep"></div>
+                    <ul id="user-options">
+                        <li><a class="user-option" href="change_data">Felhasználói adatok módosítása</a></li>
+                        <li><a class="user-option" href="logout">Kijelentkezés</a></li>
+                    </ul>
+                </section>
+                <section id="user-details">
+                    <h1 id="user-name">{{ user_session.felh_n }}</h1>
+                    <h2 id="user-reviews-title">Értékeléseid:</h2>
+                    <div id="user-reviews">
+                        {% if reviews != None %}
+                            {% for r in reviews %}
+                                <div class="review {{ r.class }}">
+                                    <p class="reviewer-product">{{ r.product }}</p>
+                                    <div class="review-details">
+                                        <div class="reviewer-rating">{{ r.rating }}/10</div>
+                                        <div class="reviewer-text">{{ r.reviewText }}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="no-reviews-yet">Még nem írtál egy értékelést sem!</p>
+                        {% endif %}
+                    </div>
+                </section>
+            </article>
+        </main>
+        {% include 'ui/footer.html' %}
+    </body>
+
+</html>

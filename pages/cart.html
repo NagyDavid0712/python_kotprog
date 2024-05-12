@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosár | RicerPower</title>
+
+    <link rel="stylesheet" href={{ url_for('static', filename='css/skeleton.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/menu.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/cart.css') }}>
+    <link rel="icon" href={{ url_for('static', filename='img/icon.png') }}>
+</head>
+<body>
+    {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+    {% endwith %}
+    <main>
+        <img src={{ url_for('static', filename='img/icon.png') }} alt="logo" class="logo-print">
+        <article class="cart-container">
+            <h1 class="site-description">Kosaram</h1>
+            <div class="cart-products-container" id="cart-products-container">
+                {% if cartItems|length == 0 %}
+                    <h1 class="empty-cart-placeholder">Még nem tettél semmit a kosaradba <span style="font-family: Arial, Helvetica, sans-serif;">:</span>&#40;</h1>
+                    <h1 class="empty-cart-placeholder"><a href="parts">Alkatrészek böngészése</a></h1>
+                {% else %}
+                    {% for c in cartItems %}
+                        <div class="cart-item">
+                            <img src={{ url_for('static', filename=c.product.product_img  ) }} alt={{ url_for('static', filename=c.product_img_alt ) }} class='cart-img'>
+                            <h4 class='cart-title'>Árucikk: <span>{{ c.product.product_title }}</span></h4>
+                            <h4 class='cart-quantity'>Mennyiség: <span>{{ c.quantity }}</span> db</h4>
+                            <h4 class='cart-price'>Ár: <span>{{ c.price }}</span></h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form>
+                {% if cartItems|length != 0 %}
+                    <button type="submit" name="delete-cart" id="delete-cart" class="delete-cart">Kosár ürítése</button>
+                    <button style="margin-right: 10px;" type="submit" name="delete-cart" id="delete-cart" class="delete-cart">Megrendelés</button>
+                {% endif %}
+            </form>
+        </article>
+    </main>
+    {% include 'ui/footer.html'   %}
+</body>
+
+    
+</html>

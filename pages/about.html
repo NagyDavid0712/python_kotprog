@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Rólunk | RicerPower.com</title>
+        <link rel="stylesheet" href={{ url_for('static', filename='css/menu.css') }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename='css/skeleton.css') }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename='css/about.css') }}/>
+        <link rel="icon" href={{ url_for('static', filename='img/icon.png') }}>
+        <!--<style>
+            <?php echo currentPageStyle() ?> {
+                box-shadow: inset 0 50px 0 0 black;
+            }
+        </style>-->
+    </head>
+    <body>
+        {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+        {% endwith %}
+        <main>
+            <article id="marketing-bs">
+                <h1 class="site-description">Rólunk</h1>
+                <div class="text-bs-container">
+                    <div class="size left"><img src={{ url_for('static', filename='img/about/stock_company_bullshit3.jpg') }} alt="stock-bs1"></div>
+                    <p class="text right">Mi vagyunk a RicerPower, egy webáruház, amely specializálódott az autóalkatrészek 
+                    forgalmazására, különös hangsúlyt fektetve a tuning kultúrára. Célunk az, hogy az autórajongók 
+                    számára lehetővé tegyük, hogy az autójukat egyedivé és egyedülállóvá varázsolják azáltal, 
+                    hogy a legjobb minőségű autóalkatrészeket és tartozékokat kínáljuk a piacon.</p>
+                </div>
+                <hr>
+                <div class="text-bs-container">
+                    <p class="text left">Az autótuning hosszú és gazdag története van, és mi szeretnénk tovább folytatni ezt a hagyományt 
+                        azáltal, hogy olyan termékeket kínálunk, amelyek lehetővé teszik a tuning kultúra ápolását, és az 
+                        autók személyre szabását. Termékkínálatunk nagyon sokrétű, és magában foglalja a legjobb minőségű 
+                        autóalkatrészeket és tartozékokat a legnépszerűbb japán autómárkákhoz, mint például a Toyota, a 
+                        Nissan, a Honda és a Subaru. Az alkatrészek és tartozékok között megtalálhatóak az olyan népszerű 
+                        kiegészítők, mint a fényszórók, a lökhárítók, a spoilerek, az ülések és még sok más.</p>
+                    <div class="size right"><img src={{ url_for('static', filename='img/about/stock_company_bullshit2.jpg') }} alt="stock-bs2"></div>
+                </div>
+                <hr>
+                <div class="text-bs-container">
+                    <div class="size left"><img src={{ url_for('static', filename='img/about/stock_company_bullshit.jpg') }} alt="stock-bs3"></div>
+                    <p class="text right">Az autóalkatrészek piaca nagyon versenyképes, és mi azon dolgozunk, hogy a lehető legjobb minőségű 
+                        termékeket kínáljuk a legversenyképesebb áron. Az áruházunkban kínált termékek minőségi garanciával 
+                        rendelkeznek, és mindegyik alkatrészre és tartozékra gondosan ellenőrizzük az előállítás minőségét 
+                        és a biztonságot. Célunk, hogy minden vásárló elégedett legyen az általunk kínált termékekkel és 
+                        szolgáltatásokkal.</p>
+                </div>
+                <hr>
+                <div class="text-bs-container">
+                    <p class="text">Az autótuning kultúra nem csak a járművek átalakításáról szól, hanem egy életérzésről és szenvedélyről
+                        is. Mi is szenvedéllyel dolgozunk azért, hogy minden vásárlónk elégedett legyen a termékeinkkel és 
+                        az általunk nyújtott szolgáltatásokkal. Az autórajongók közössége egy nagy család, és mi is részei 
+                        vagyunk ennek a családnak. Büszkék vagyunk arra, hogy az autótuning kultúra elősegítése révén 
+                        hozzájárulunk ennek a közösségnek az erősítéséhez.</p>
+                    <div class="size"><img src={{ url_for('static', filename='img/about/stock_mechanic_2.jpg') }} alt="stock_mechanic"></div>
+                </div>
+                <hr>
+                <div class="text-bs-container">
+                    <div class="size"><img src={{ url_for('static', filename='img/about/stock_mechanic.jpg') }} alt="stock_mechanic"></div>
+                    <p class="text">Reméljük, hogy a mi áruházunkban találja meg az Önnek megfelelő autóalkatrészeket és tartozékokat, 
+                        és hogy együtt tudunk dolgozni az Ön autója személyre szabásának és az autótuning kultúra ápolásának 
+                        érdekében. Ha bármilyen kérdése vagy problémája merülne fel, kérjük, ne habozzon felvenni velünk a 
+                        kapcsolatot az ügyfélszolgálaton keresztül, és mi mindig készek vagyunk segíteni. Köszönjük, hogy a 
+                        RicerPower webáruházat választotta!</p>
+                </div>
+
+            </article>
+            
+        </main>
+        {% include 'ui/footer.html' %}
+    </body>
+</html>

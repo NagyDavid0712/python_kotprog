@@ -1,0 +1,16 @@
+<nav>
+    <a href="/" id="main-title"><img src={{ url_for('static', filename='img/logo.png') }} alt="RicerPower"/></a>
+    <a href="/" class="menu-link">Főoldal</a>
+    <a href="parts" class="menu-link">Alkatrészek</a>
+    <a href="wiki" class="menu-link">Wiki</a>
+    <a href="about" class="menu-link">Rólunk</a>
+    <span id="user-buttons">
+        <!--<a href="profile.php" class="menu-link"><img src="fonts/svg/user-solid.svg" alt="user-solid"> Profil</a>-->
+        {% if user_session == None %}
+            <a href="login" class="menu-link"><img src={{ url_for('static', filename='fonts/svg/user-solid.svg') }} alt="user-solid"> Bejelentkezés</a></span>
+        {% else %}
+            <a href="cart" class="menu-link"><img src={{ url_for('static', filename='fonts/svg/cart-shopping-solid.svg') }} alt="cart-solid"> Kosár</a>
+            <a href="profile" class="menu-link"><img src={{ url_for('static', filename="fonts/svg/user-solid.svg") }} alt="user-solid"> Profil</a>
+        {% endif %}
+    </span>
+</nav>

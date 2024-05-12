@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "tekoMedium";
+    src: url('../fonts/Teko/Teko-Medium.ttf') format('truetype');
+}
+
+.wiki-main {
+    width: 75%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.collapse {
+    width: 100%;
+    background-color: #2C3333;
+    padding: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 18pt;
+    text-align: left;
+}
+
+.collapse-active, .collapse:hover {
+    background-color: #414b4b;
+}
+
+.collapse-content { 
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: aliceblue;
+}
+
+.engine-name {
+    text-align: center;
+    margin: 20px;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.engine-description {
+    margin: 15px 0;
+    text-align: justify;
+    font-size: 16pt;
+}
+
+.engine-image-holder {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.engine-image-description {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.engine-image {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+}
+
+.engine-table-description {
+    border-collapse: collapse;
+    font-size: 18pt;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+
+.engine-table-description td, .engine-table-description tr, th {
+    border: 1px solid black;   
+    padding: 15px;  
+    font-weight: bold;
+}
+
+.engine-table-description tr:nth-of-type(even) {
+    background-color: rgb(169, 176, 176);
+}
+
+.prgh {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.site-description {
+    font-size: 46pt;
+    font-family: "tekoMedium";
+}
+
+.wiki-video {
+    padding: 80px 0 30px 0;
+}
+
+video {
+    width: 100%;
+}

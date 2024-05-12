@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkatrészek | RicerPower.com</title>
+
+    <link rel="stylesheet" href={{ url_for('static', filename='css/skeleton.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/menu.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/parts.css') }}>
+    <link rel="icon" href={{ url_for('static', filename='img/icon.png') }}>
+    <script src={{ url_for('static', filename='js/jquery-3.6.3.js') }}></script>
+</head>
+<body>
+    {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+    {% endwith %}
+    <main class="products-main">
+        <h1 class="site-description">Alkatrészek</h1>
+        <!--SZŰRŐ JELENLEG FEJLESZTÉS ALATT-->
+        <!--
+        
+        <article id="filter-container">
+            <form action="/parts" method="post">
+                <label for="engine-code">Motor típusa: </label>
+                <select name="engine-code" id="engine-code" class="filters">
+                    <option value="nth" selected>Válasszon motort...</option>
+                    <option value="RB26">RB26</option>
+                    <option value="2JZ">2JZ</option>
+                </select>
+                <label for="engine-main-part">Fő kategória: </label>
+                <select name="engine-main-part" id="engine-main-part" class="filters">
+                    <option value="nth" selected>Válasszon kategóriát...</option>
+                    <option value="hengerfej">Hengerfej</option>
+                    <option value="motor">Motor</option>
+                </select>
+                <label for="engine-part">Alkatrész: </label>
+                <select name="engine-part" id="engine-part" class="filters">
+                    <option value="nth" selected>Válasszon alkatrészt...</option>
+                    <option value="hajtokar">Hajtókar</option>
+                    <option value="vezermutengely">Vezérműtengely</option>
+                </select>
+                <button id="do_filter">Keresés</button>
+            </form>
+        </article>
+        -->
+        <form action="/product" method="GET">
+            <article id="parts-container">
+                {% if products|length == 0 %}
+                    <h1>Sajnos nincsenek a keresési feltételeknek megfelelő áruk.</h1>
+                {% else %}
+                    {% for p in products %}
+                        <div class='part-container'>
+                            <img src={{ url_for('static', filename=p.product_img) }} alt={{ p.product_img_alt }} class='part-img'>
+                            <hr style='width: 100%;'>
+                            <p class='part-description'>{{ p.product_title }}</p>
+                            <hr style='width: 100%;'>
+                            <button type='submit' name='part_id' value={{ p.id }}>Megtekintés</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </article>
+        </form>
+    </main>
+    {% include 'ui/footer.html'   %}
+</body>
+</html>

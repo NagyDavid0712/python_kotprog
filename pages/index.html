@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>RicerPower.com</title>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/menu.css") }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/skeleton.css") }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/index.css") }}/>
+        <link rel="icon" href={{ url_for('static', filename="img/icon.png") }}>
+        <!--<style>
+            <?php echo currentPageStyle() ?> {
+                box-shadow: inset 0 50px 0 0 black;
+            }
+        </style>-->
+    </head>
+    <body>
+        {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+        {% endwith %}
+        
+        <main>
+            <div class="welcome-screen">
+                <img src={{ url_for('static', filename='img/welcome_slideshow/garage1.jpg') }} alt="Slideshow kép" id="slideshow-image"/>
+                <img src={{ url_for('static', filename="img/logo_upscaled.png") }} alt="Slideshow logó" id="slideshow-logo"/>
+            </div>
+            <article id="welcome-text-container">
+                <div class="welcome-text">
+                    <div class="icon"><img src={{ url_for('static', filename="fonts/svg/1-solid.svg") }} alt="number-1"></div>
+                    <p>A RicerPower a Szegedi Tudományegyetem elsőszámú japán tuningalkatrész-webáruháza.</p>
+                </div>
+                <div class="welcome-text">
+                    <div class="icon"><img src={{ url_for('static', filename="fonts/svg/gear-solid.svg") }} alt="gear-solid"></div>
+                    <p>Az alkatrészeket csak a legmagasabb minőséget képviselő partnereinktől szerezzük be.</p>
+                </div>
+                <div class="welcome-text">
+                    <div class="icon"><img src={{ url_for('static', filename="fonts/svg/truck-fast-solid.svg") }} alt="truck-fast"></div>
+                    <p>A szállítás sebességét pedig a balra látható truck-fast elnevezésű fontawesome karakter elnevezésével tudnánk jellemezni.</p>
+                </div>
+
+                <a class="teaser-links firstlink" href="parts">Alkatrészeink</a>
+                <a class="teaser-links" href="wiki">Wiki</a>
+            </article>
+            
+        </main>
+        {% include 'ui/footer.html' %}
+        <script src={{ url_for('static', filename="js/welcome-slideshow.js") }}></script>
+    </body>
+
+</html>

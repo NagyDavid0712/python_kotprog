@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Adatok módosítása | RicerPower.com</title>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/menu.css") }} />
+        <link rel="stylesheet" href={{ url_for('static', filename="css/skeleton.css") }}/>
+        <link rel="stylesheet" href={{ url_for('static', filename="css/change_data.css") }}/>
+        <link rel="icon" href={{ url_for('static', filename="img/icon.png") }}>
+    </head>
+    <body>
+        <!--
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="close">&times;</span>
+                <p>Hiba az adatok változtatása közben. Valamelyik mező(k) nem felelt(ek) meg a kritériumoknak!</p>
+            </div>
+        </div>
+
+        <?php
+            if($error) {
+                echo "<script>
+                var modal = document.getElementById('myModal');
+                var btn = document.getElementById('close');
+                modal.style.display = 'block';
+                btn.onclick = function() { modal.style.display = 'none'; }
+                </script>";
+            }
+        ?>-->
+
+        {% if msg is not undefined %}
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="close">&times;</span>
+                    <p>{{ msg }}</p>
+                </div>
+            </div>
+
+            <script>
+                var modal = document.getElementById('myModal');
+                var btn = document.getElementById('close');
+                modal.style.display = 'block';
+                btn.onclick = function() { modal.style.display = 'none'; }
+            </script>
+        {% endif %}
+
+        {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+        {% endwith %}
+        <main>
+            <article id="change-data">
+                <section id="basic-data">
+                    <form action="/change_password" method="POST">
+                        <fieldset id="data-form">
+                            <legend>Jelszó módosítása</legend>
+                                <input class="input-change" type="password" name="new_password" placeholder="Új jelszó"/>
+                                <br/>
+                                <input class="input-change" type="password" name="new_password_again" placeholder="Új jelszó mégegyszer"/>
+                                <br/>
+                                <input type="submit" name="submit_change" value="Küldés"/>
+                                <br/>
+                        </fieldset>
+                    </form>
+                </section>
+                <section id="change-image">
+                    <h3 id="change-image-title">Profilkép megváltoztatása</h3>
+                    <img src={{ url_for('static', filename=user_session.prof_pic_loc) }} alt="profilkép">
+                    <form action="/change_profile_pic" method="post" enctype="multipart/form-data">
+                        <label for="image-upload" id="image-upload-label">
+                            <img src={{ url_for('static', filename="fonts/svg/cloud-arrow-up-solid.svg") }}> Tallózás
+                        </label>
+                        <input id="image-upload" name="new_prof_pic" type="file"/>
+                        <br>
+                        <input type="submit" name="upload-button" value="Feltöltés" />
+                    </form>
+                </section>
+            </article>
+        </main>
+        {% include 'ui/footer.html' %}
+    </body>
+</html>

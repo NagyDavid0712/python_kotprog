@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{{ product.product_title }} | RicerPower.com</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/skeleton.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/menu.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/product.css') }}/>
+    <link rel="icon" href={{ url_for('static', filename='img/icon.png') }}>
+    <script src={{ url_for('static', filename='js/jquery-3.6.3.js') }}></script>
+</head>
+<body>
+    {% with user_session=user_session %}
+            {% include 'ui/menu.html' %}
+    {% endwith %}
+    <main>
+        <article id="product-container">
+            <section id="path-to">
+                <a href="/">Főoldal</a> > 
+                <a href="parts">Alkatrészek</a> >  
+                <a href="product?part_id={{product.id}}" id="category">{{ product.product_title }}</a>
+            </section>
+            <section id="product-img-container">
+                <img id="product-img" src={{ url_for('static', filename=product.product_img) }} alt={{ product.product_img_alt }}/>
+            </section>
+            <section id="product-info-container">
+                <h1 id="product-title">{{ product.product_title }}</h1>
+                <hr style="margin-top: 15px; margin-bottom: 15px; width: 100%">
+                <div id="product-details">
+            
+                    {% if product.isAvailable %}
+                        <p id='available'><img src={{ url_for('static', filename='fonts/svg/check-solid.svg') }} alt='check'/> Raktáron</p>
+                    {% else %}
+                        <p id='available' class='not-available'><img src={{ url_for('static', filename='fonts/svg/xmark-solid.svg') }} alt='xmark'/> Nincs Raktáron</p>
+                    {% endif %}
+
+                    <p id="product-price-title">Ár: <span id="product-price">{{ product.product_price }}</span> HUF</p>
+                    <form id="form-cart">
+                            <div id="product-quantity-container">
+                                <input type="number" name="mennyiseg" id="product-quantity" min="1" value="1">
+                                {% if product.isAvailable %}
+                                    <button type='submit' id='place-order' name='part_id' value={{ product.id }}>
+                                        <img id='cart-plus' src={{ url_for('static', filename='fonts/svg/cart-plus-solid.svg') }} alt='cart-plus'>
+                                        Kosárhoz adás
+                                    </button>
+                                {% else %}
+                                    <button type='submit' id='place-order' disabled>
+                                        <img id='cart-plus' src={{ url_for('static', filename='fonts/svg/cart-plus-solid.svg') }} alt='cart-plus'>
+                                        Kosárhoz adás
+                                    </button>
+                                {% endif %}
+                            </div>
+                    </form>
+                </div>
+            </section>
+            <section id="product-description-container">
+                <h2>Leírás</h2>
+                <p id="product-description">{{ product.product_description }}</p>
+                <h2>Értékelések</h2>     
+            </section>
+            <section id="product-reviews">
+                {% if user_session != None %}
+                    <form id="add-review" action="addReview" method="POST">
+                        <div id="points">
+                            <input name="star-rating" type="range" value="0" min="0" max="10" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>/10
+                        </div>
+                        <textarea name="review-to-add" id="add-review-box" cols="30" rows="10" placeholder="Mondd el a véleményed!" maxlength="300"></textarea><br>
+                        <button type="submit" name="submit-review" value={{ product.id }}>Küldés</button>
+                    </form>
+                {% else %}
+                    <p class="no-reviews-yet">Értékelés hozzáadásához <a href="login">jelentkezz be</a>!</p>
+                {% endif %}
+            
+                <div id="reviews">
+                    {% if reviews != None %}
+                        {% for r in reviews %}
+                            <div class="review {{ r.class }}">
+                                <p class="reviewer-name">{{ r.reviewWriter }} <span> értékelése:</span></p>
+                                <div class="review-details">
+                                    <div class="reviewer-rating">{{ r.rating }}/10</div>
+                                    <div class="reviewer-text">{{ r.reviewText }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-reviews-yet">Ehhez a termékhez még nincsenek értékelések.</p>
+                    {% endif %}
+                </div>
+            </section>
+        </article>
+    </main>
+        {% include 'ui/footer.html' %}
+    <script>
+        $(document).ready(() => {
+            $("#form-cart").submit((e) => {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "POST",
+                    url: "placeProductToCart",
+                    data: {
+                        id : $("#place-order").val(),
+                        quantity: $("#product-quantity").val()
+                    },
+                    success: (res) => {
+                        //console.log(res)
+                        alert(res)
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

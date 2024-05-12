@@ -1,0 +1,152 @@
+@font-face {
+    font-family: "tekoMedium";
+    src: url('../../fonts/Teko/Teko-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "tekoRegular";
+    src: url('../../fonts/Teko/Teko-Regular.ttf') format('truetype');
+}
+
+#user-profile{
+    display: flex;
+    width: 70%;
+    min-height: 85vh;
+    background-color: white;
+}
+
+
+#user-profile-sidebar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#user-details {
+    width: 75%;
+}
+
+#profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+  
+#profile-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+  
+
+
+#user-options{
+    list-style: none;
+    padding-top: 30px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+li{
+    margin-bottom: 30px;
+}
+
+.user-option {
+    text-decoration: none;
+    font-family: "tekoMedium";
+    font-size: 20pt;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #2C3333;
+    color: white;
+}
+
+.user-option:active {
+    text-decoration: none;
+}
+
+#user-name{
+    font-size: 36px;
+    font-family: 'tekoMedium';
+    margin-bottom: 50px;
+}
+
+#user-id{
+    font-size: 16px;
+    color: rgb(91, 91, 91);
+}
+
+#user-public-data{
+    list-style: none;
+    padding-top: 15px;
+    padding-bottom: 40px;
+}
+
+.delete-review{
+    float: right;
+}
+
+.delete-review img{
+    width: 15px;
+}
+
+.review {
+    font-family: 'tekoMedium';
+    background-color: rgb(246, 246, 246);
+    margin: 20px 15px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.reviewer-name {
+    font-size: 20px;
+    color: rgb(90, 90, 90);
+}
+
+.review-details {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.reviewer-rating {
+    font-size: 40px;
+}
+
+.bad {
+    background-image: linear-gradient(to right, rgb(255, 181, 181), rgb(255, 239, 239), white, white);
+}
+
+.notgreat {
+    background-image: linear-gradient(to right, rgb(255, 220, 181), rgb(255, 249, 239), white, white);
+}
+
+.mid {
+    background-image: linear-gradient(to right, rgb(253, 255, 181), rgb(255, 255, 242), white, white);
+}
+
+.good {
+    background-image: linear-gradient(to right, rgb(233, 255, 181), rgb(247, 252, 237), white, white);
+}
+
+.great {
+    background-image: linear-gradient(to right, rgb(196, 255, 181), rgb(237, 252, 239), white, white);
+}
+
+.reviewer-text {
+    width: 100%;
+    text-align: justify;
+    padding: 5px 15px;
+    font-family: 'tekoRegular';
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.reviewer-product {
+    font-weight: bold;
+    font-size: 16pt;
+}

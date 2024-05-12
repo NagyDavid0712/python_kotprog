@@ -1,0 +1,120 @@
+/*.about-left {
+    float: left;
+    text-align: left;
+}
+
+.about-right {
+    float: right;
+    text-align: right;
+}
+
+section h2 {
+    font-family: "tekoRegular";
+    font-size: 26px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+#about-image-1{
+    width: 100%;
+    margin: 0 auto;
+}*/
+
+#marketing-bs {
+    min-width: 900px;
+    width: 85%;
+}
+
+#marketing-bs:nth-last-child(-n + 1){
+    margin-bottom: 70px;
+}
+
+.site-description {
+    font-size: 46pt;
+    font-family: "tekoMedium";
+}
+
+hr {
+    margin: 70px 0;
+    animation: 2s ease-out 0s 1 opacity;
+}
+
+.text-bs-container {
+    margin-bottom: 20px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px;
+    align-items: flex-start;
+}
+
+
+
+.size {
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+}
+
+
+.size img {
+    width: 100%;
+    vertical-align: top;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+}
+
+.text {
+    font-size: 24pt;
+    width: 50%;
+    font-family: "tekoMedium";
+    text-align: justify;
+}
+
+
+@font-face {
+    font-family: "tekoRegular";
+    src: url('../../fonts/Teko/Teko-Regular.ttf') format('truetype');
+}
+
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+}
+
+@keyframes opacity {
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
+
+.left {
+    animation: 2s ease-out 0s 1 slide-in-left;
+}
+
+.right {
+    animation: 2s ease-out 0s 1 slide-in-right;
+}
