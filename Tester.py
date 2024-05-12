@@ -31,15 +31,15 @@ class Tester(unittest.TestCase):
     def test_login_with_cred(self):
         tc = app.test_client()
         response = tc.post("/auth_user", data=dict({
-            "login__name": "Tesztteszt",
-            "login__password": "Tesztteszt"
+            "login__name": "tesztjanos",
+            "login__password": "tesztjanos"
         }), follow_redirects=200)
         
         self.assertEqual(response.status_code, 200)
 
         with tc as c:
             with c.session_transaction() as s:
-                self.assertEqual(s["user"]["felh_n"], "Tesztteszt")
+                self.assertEqual(s["user"]["felh_n"], "tesztjanos")
 
     
 
